@@ -1,0 +1,44 @@
+.custom-label{
+    width: 100px;
+}
+.icone{
+    width: 20px;
+}
+.swal2-popup {
+    font-size: 1.6rem !important;
+}
+td.details-control {
+    position: relative;
+    cursor: pointer;
+    width: 20px;
+}
+td.details-control:before {
+    content: '\f152';
+    font-family: 'Font Awesome\ 5 Free';
+    cursor: pointer;
+    font-size: 16px;
+    color: #111111;
+}
+
+tr.details td.details-control {
+    position: relative;
+}
+tr.details td.details-control:before {
+    content: '\f150';
+    color: #3c8dbc;
+}
+.details{
+    padding: 2px 6px !important;
+    margin-right: 5px;
+}
+#addComponente{
+    margin-top: 5px;
+}
+.tableBtn{
+    width: 40px;
+}
+.log{
+    position: absolute; 
+    right: 15px; 
+    bottom: 15px;
+}
