@@ -97,6 +97,9 @@
             $('.date').mask('00/00/0000 00:00:00', {placeholder: "__/__/____ __:__:__"});
 
             var dt = $('#listagem').DataTable( {
+                language: {
+                    url: 'dataTables.pt-BR.json'
+                },
                 ajax: {
                     url: "{{ $gridUrl }}",
                     dataSrc: "",

@@ -47,6 +47,9 @@
 
         $(document).ready(function() {
             var dt = $('#listagem').DataTable( {
+                language: {
+                    url: 'dataTables.pt-BR.json'
+                },
                 ajax: {
                     url: "{{ $gridUrl }}",
                     dataSrc: ""

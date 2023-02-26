@@ -98,6 +98,9 @@
 
         $(document).ready(function() {
             var dt = $('#listagem').DataTable( {
+                language: {
+                    url: 'dataTables.pt-BR.json'
+                },
                 ajax: {
                     url: "{{ $gridUrl }}",
                     dataSrc: ""
@@ -137,31 +140,46 @@
                         extend: 'copy',
                         text: '<i class="fa fa-copy"></i>',
                         className: 'btn btn-default tableBtn btnCopy',            
-                        filename: "{{ $nomeDownload }}"
+                        filename: "{{ $nomeDownload }}",
+                        exportOptions: {
+                            columns: ':not(:first-child)'
+                        }
                     }, 
                     {
                         extend: 'csv',
                         text: '<i class="fa fa-list-alt"></i>',
                         className: 'btn btn-default tableBtn btnCsv',
-                        filename: "{{ $nomeDownload }}"
+                        filename: "{{ $nomeDownload }}",
+                        exportOptions: {
+                            columns: ':not(:first-child)'
+                        }
                     }, 
                     {
                         extend: 'excel',
                         text: '<i class="fa fa-file-excel"></i>',
                         className: 'btn btn-default tableBtn btnExcel',
-                        filename: "{{ $nomeDownload }}"
+                        filename: "{{ $nomeDownload }}",
+                        exportOptions: {
+                            columns: ':not(:first-child)'
+                        }
                     }, 
                     {
                         extend: 'pdf',
                         text: '<i class="fa fa-file-pdf"></i>',
                         className: 'btn btn-default tableBtn btnPdf',
-                        filename: "{{ $nomeDownload }}"
+                        filename: "{{ $nomeDownload }}",
+                        exportOptions: {
+                            columns: ':not(:first-child)'
+                        }
                     }, 
                     {
                         extend: 'print',
                         text: '<i class="fa fa-print"></i>',
                         className: 'btn btn-default tableBtn btnPrint',
-                        filename: "{{ $nomeDownload }}"
+                        filename: "{{ $nomeDownload }}",
+                        exportOptions: {
+                            columns: ':not(:first-child)'
+                        }
                     },
                 ]
             } );
