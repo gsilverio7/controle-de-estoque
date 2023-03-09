@@ -33,8 +33,8 @@
                                     </div>
                                 </span>
                                 <select class="form-control" name="tipo" id="tipo" {{ isset($requisicao) ? 'disabled' : '' }}>
-                                    <option value="v" {{ isset($requisicao) && $requisicao['tipo'] == 'v' ? 'selected' : '' }}>Venda</option>
-                                    <option value="c" {{ isset($requisicao) && $requisicao['tipo'] == 'c' ? 'selected' : '' }}>Compra</option>
+                                    <option value="v" {{ (isset($requisicao) && $requisicao['tipo'] == 'Venda') ? 'selected' : '' }}>Venda</option>
+                                    <option value="c" {{ (isset($requisicao) && $requisicao['tipo'] == 'Compra') ? 'selected' : '' }}>Compra</option>
                                 </select>
                             </div>
                         </div>

@@ -69,6 +69,9 @@
                             <th>Responsável</th>
                             <th>Data</th>
                         </tr>
+                        <tfoot align="right">
+                            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+                        </tfoot>
                     </thead>
                 </table>
             </div>
@@ -122,13 +125,8 @@
                     },
                     { data: 'produto' },
                     { data: 'quantidade' },
-                    {                       
-                        render: function(data, type, row, meta){
-                            if (row.tipo == 'c') {
-                                return $.fn.dataTable.render.number('.', ',', 2, 'R$ ').display(row.preco_custo * row.quantidade);
-                            }
-                            return $.fn.dataTable.render.number('.', ',', 2, 'R$ ').display(row.preco_venda * row.quantidade);
-                        }                        
+                    {  
+                        data: 'preco'                 
                     },
                     { data: 'responsavel' },
                     { data: 'data' }
@@ -172,7 +170,42 @@
                         className: 'btn btn-default tableBtn btnPrint',
                         filename: "{{ $nomeDownload }}"
                     },
-                ]
+                ],                                            
+                rowCallback: function () {
+                    var api = this.api();
+        
+                    // convertendo strings para números
+                    var intVal = function ( i ) {
+                        if (typeof i === 'string') {
+                            //
+                            return i.replace(/\D/g,'') * 0.01;
+                            //
+                        } else if (typeof i === 'number') {
+                            return i;
+                        }
+                        return 0;
+                    };
+                    
+                    // somando valores das colunas
+                    var qtdTotal = api
+                            .column( 3 )
+                            .data()
+                            .reduce( function (acumulado, atual) {
+                                return intVal(acumulado) + intVal(atual);
+                            }, 0 );
+                    
+                    var capitalTotal = api
+                            .column( 4 )
+                            .data()
+                            .reduce( function (acumulado, atual) {
+                                return intVal(acumulado) + intVal(atual);
+                            }, 0 );
+
+                    // Mostrando valores nos rodapés 
+                    $( api.column( 0 ).footer() ).html('Total');
+                    $( api.column( 3 ).footer() ).html(qtdTotal);
+                    $( api.column( 4 ).footer() ).html('R$ ' + capitalTotal.toLocaleString('pt-br', {minimumFractionDigits: 2}));
+                }
             } );
 
             $('.btnRefresh').attr('title', 'Atualizar');

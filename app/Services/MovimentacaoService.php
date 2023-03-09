@@ -67,8 +67,18 @@ class MovimentacaoService
                 DB::raw('DATE_FORMAT(requisicoes.created_at, "%d/%m/%Y %H:%i:%s") as data'), 
                 'users.name as responsavel', 
                 DB::raw('COALESCE(produtos_simples.nome, produtos_compostos.nome) as produto'),
-                DB::raw('COALESCE(produtos_simples.preco_venda, produtos_compostos.preco_venda) as preco_venda'),
-                DB::raw('COALESCE(produtos_simples.preco_custo, SUM(componentes.preco_custo * produtos_compostos_componentes.quantidade)) as preco_custo'),
+                DB::raw(
+                    'IF(
+                        requisicoes.tipo = "v", 
+                        CONCAT("R$ ", 
+                            FORMAT( COALESCE(produtos_simples.preco_venda, produtos_compostos.preco_venda), 2, "pt_BR" )
+                        ), 
+                        CONCAT("R$ ", 
+                            FORMAT( COALESCE(produtos_simples.preco_custo, SUM(componentes.preco_custo * produtos_compostos_componentes.quantidade)), 2, "pt_BR" )
+                        )
+                    ) 
+                    AS preco'
+                ),
                 'movimentacoes.quantidade',
             )->get();        
     }

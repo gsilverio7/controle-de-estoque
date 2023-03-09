@@ -32,7 +32,6 @@ class Requisicao extends Model
     }
 
     //accessors
-    
     public function getTipoAttribute($value)
     {
         if ($value == 'c') {
