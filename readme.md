@@ -1,3 +1,16 @@
+Login: admin@mail.com
+Password: 147258
+
+1. Clone the repository into your machine
+2. Clone the .env file without the '.example' and change it according to your database config
+3. Run php artisan migrate --seed
+4. Run composer install
+5. Run npm install 
+6. Run php artisan serve
+
+Note that you need to have Composer 2.*, php 7.4, Node.js 14.15 installed in your machine, and a server of either MySql or Maria DB
+##
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
