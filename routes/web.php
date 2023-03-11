@@ -115,4 +115,22 @@ Route::group(['prefix' => 'usuarios'], function () {
     Route::get('/meu-usuario', 'UserController@showMyUser');
 });
 
+Route::group(['prefix' => 'clientes'], function () {
+    Route::get('/', 'ClienteController@index')
+        ->name('clientes');
+    Route::get('listagem', 'ClienteController@grid')
+        ->name('clientes.grid');
+    Route::get('novo', 'ClienteController@create')
+        ->name('clientes.add');
+    Route::get('{idCliente?}', 'ClienteController@show')
+        ->where('idCliente', '[0-9]+')
+        ->name('clientes.show');
+    Route::put('{idCliente}', 'ClienteController@update')
+        ->where('idCliente', '[0-9]+')
+        ->name('clientes.update');
+    Route::post('salvar', 'ClienteController@store')
+        ->name('clientes.store');
+    Route::delete('/', 'ClienteController@destroy')
+        ->name('clientes.del');
+});
 

@@ -176,6 +176,11 @@ return [
             'icon' => 'fa fa-archive'
         ],
         [
+            'text' => 'Clientes',
+            'url'  => 'clientes',
+            'icon' => 'fa fa-users'
+        ],
+        [
             'text' => 'Usuarios',
             'url'  => 'usuarios',
             'icon' => 'fa fa-users'

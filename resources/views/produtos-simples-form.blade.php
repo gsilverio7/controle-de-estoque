@@ -13,7 +13,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">{{ isset($produto) ? ('Código: ' . $produto['id']) : 'Novo Produto' }}</h3>
         </div> 
-        <form id="frmProdutosSimples" class="form form-produtos" type="{{ isset($produto) ? 'PUT' : 'POST' }}" action="{{ $formUrl }}" role="form">
+        <form id="frmProdutosSimples" class="form form-produtos" type="{{  isset($produto) ? 'PUT' : 'POST' }}" action="{{ $formUrl }}" role="form">
             <input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
             @if(isset($produto))
                 <input id="codigo" type="hidden" name="id" value="{{$produto['id']}}">
