@@ -1,4 +1,4 @@
-Login: admin@mail.com
+Login: admin@mail.com  
 Password: 147258
 
 1. Clone the repository into your machine
