@@ -97,7 +97,6 @@ class MovimentacaoService
         $inicio = $this->formataData($request->inicio);
         $fim = $this->formataData($request->fim);
 
-
         $query = DB::table('movimentacoes')
             ->leftJoin('requisicoes', 'requisicoes.id', '=', 'movimentacoes.id_requisicao')
             ->leftJoin('users', 'users.id', '=', 'requisicoes.id_user')
@@ -196,7 +195,10 @@ class MovimentacaoService
     private function formataData($data)
     {
         try {
-            return Carbon::createFromFormat('d/m/Y H:i:s', $data)->format('Y-m-d H:i:s');
+            if (isset($data)) {
+                return str_replace('T', ' ', $data) . ':00';
+            }
+            return '';
         } catch (\Exception $e) {
             return '';
         }

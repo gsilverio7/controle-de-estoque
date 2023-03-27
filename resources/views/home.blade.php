@@ -8,13 +8,16 @@
 
 @section('content')
     <div style="width: 500px; height: 700px;">
-        <h4 class="text-center">Controle de Caixa 2023</h4>
+        <h4 class="text-center">Controle de Caixa 
+            <input type="number" min="1900" max="2099" step="1" id="ano" value="2023"/>
+            <button onclick="buscarDados()">ok</button>
+        </h4>
         <canvas id="myChart"></canvas>
     </div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="/css/custom.css">
 @stop
 
 @section('js')
@@ -65,17 +68,20 @@
         }
 
         gerarGraficos(valoresIniciais, coresIniciais);
+        buscarDados();
 
-        $.ajax({
-            type: 'GET',
-            url: graficoUrl,
-            data: {
-                ano: 2023
-            },
-            success: function(data) {
-                gerarGraficos(data.valores, data.cores);
-            }
-        });
+        function buscarDados() {
+            $.ajax({
+                type: 'GET',
+                url: graficoUrl,
+                data: {
+                    ano: $('#ano').val()
+                },
+                success: function(data) {
+                    gerarGraficos(data.valores, data.cores);
+                }
+            });
+        } 
 
     </script>
 @stop

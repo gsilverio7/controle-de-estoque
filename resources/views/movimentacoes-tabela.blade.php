@@ -38,8 +38,7 @@
                                     <span class="input-group-addon">
                                         <i class="fas fa-calendar"></i>
                                     </span>
-                                    <input data-td-target="#datetimepicker1"
-                                    data-td-toggle="datetimepicker" type="text" class="form-control date" name="inicio" id="inicio" />
+                                    <input type="datetime-local" class="form-control" name="inicio" id="inicio" />
                                 </div>
                             </div>
                         </div>
@@ -50,7 +49,7 @@
                                     <span class="input-group-addon">
                                         <i class="fas fa-calendar"></i>
                                     </span>
-                                    <input type="text" class="form-control date" name="fim" id="fim" />
+                                    <input type="datetime-local" class="form-control" name="fim" id="fim" />
                                 </div>
                             </div>
                         </div>
