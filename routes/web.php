@@ -85,7 +85,9 @@ Route::group(['prefix' => 'movimentacoes'], function () {
     Route::get('/', 'MovimentacaoController@indexMovimentacoes')
         ->name('movimentacoes');
     Route::get('listagem', 'MovimentacaoController@gridMovimentacoes')
-        ->name('movimentacoes.grid');;
+        ->name('movimentacoes.grid');
+    Route::get('grafico', 'MovimentacaoController@gerarGrafico')
+        ->name('movimentacoes.grafico');
 });
 
 Route::group(['prefix' => 'estoque'], function () {

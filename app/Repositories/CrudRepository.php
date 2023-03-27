@@ -57,14 +57,21 @@ abstract class CrudRepository
         }
     }
 
-    public function grid(array $relacionamentos = [])
+    public function grid(array $relacionamentos = [], array $filtros = [])
     {
         try {
             $model = $this->model;
+
             if (! empty($relacionamentos)) {
-                $model = $model::with($relacionamentos);
+                $model = $model->with($relacionamentos);
             }
-            
+
+            if (! empty($filtros)) {
+                foreach ($filtros as $filtro) {
+                    $model = $model->where($filtro[0], $filtro[1], $filtro[2]);
+                }
+            }
+
             return $model->get()->toArray();
         } catch (\Exception $e) {
             return [];

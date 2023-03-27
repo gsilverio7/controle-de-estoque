@@ -8,7 +8,7 @@
 
 @section('content')
     <div style="width: 500px; height: 700px;">
-        <h4 class="text-center">Controle de Caixa</h4>
+        <h4 class="text-center">Controle de Caixa 2023</h4>
         <canvas id="myChart"></canvas>
     </div>
 @stop
@@ -19,43 +19,63 @@
 
 @section('js')
     <script> 
-        const ctx = document.getElementById('myChart');
-        const data = {
-            labels: ['jan','fev','mar','abr','mai','jun'],
-            datasets: [
-                {
-                    label: 'Dataset 1',
-                    data: [100,200,-30,401,575,686],
-                    backgroundColor: ['#00a65a','#00a65a','#f56954','#00a65a','#00a65a','#00a65a'],
-                }
-            ]
-        };
-
-        window.myObjBar = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Chart.js Bar Chart'
+        var graficoUrl = @json($graficoUrl);
+        var valoresIniciais = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var coresIniciais = ['#00a65a','#00a65a','#f56954','#00a65a','#00a65a',
+            '#00a65a','#00a65a','#00a65a','#00a65a','#00a65a','#00a65a','#00a65a'];
+        
+        function gerarGraficos(valores, cores){
+            const ctx = document.getElementById('myChart');
+            const dados = {
+                labels: ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'],
+                datasets: [
+                    {
+                        label: 'Dataset 1',
+                        data: valores,
+                        backgroundColor: cores,
                     }
-                },
-                legend: {
-                    display: false
-                },
-                tooltips: {
-                    callbacks: {
-                    label: function(tooltipItem) {
-                            return tooltipItem.yLabel;
+                ]
+            };
+            window.myObjBar = new Chart(ctx, {
+                type: 'bar',
+                data: dados,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Chart.js Bar Chart'
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        callbacks: {
+                        label: function(tooltipItem) {
+                                return tooltipItem.yLabel;
+                            }
                         }
                     }
-                }
+                },
+            }); 
+        }
+
+        gerarGraficos(valoresIniciais, coresIniciais);
+
+        $.ajax({
+            type: 'GET',
+            url: graficoUrl,
+            data: {
+                ano: 2023
             },
-        }); 
+            success: function(data) {
+                gerarGraficos(data.valores, data.cores);
+            }
+        });
+
     </script>
 @stop

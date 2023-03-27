@@ -14,6 +14,11 @@ class MovimentacaoController extends Controller
         $this->middleware('auth');
     }
 
+    public function gerarGrafico(Request $request)
+    {
+        return response()->json($this->service->gerarGrafico($request));
+    }
+
     public function gridMovimentacoes(Request $request)
     {
         return response()->json($this->service->grid($request));

@@ -35,6 +35,62 @@ class MovimentacaoService
         return $this->repository->criar($dados);
     }
 
+    public function gerarGrafico(Request $request) {
+
+        $ano = $request->ano ?? Carbon::now()->format('Y');
+        $valoresPorMes = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+        $movimentacoes = $this->repository->grid(
+            ['requisicao', 'produtoSimples', 'produtoComposto.componentes.produtoSimples']
+        );
+        $movimentacoes = array_filter($movimentacoes, function($val) use ($ano) {
+            return Carbon::createFromFormat('d/m/Y H:i:s', $val['requisicao']['created_at'])->format('Y') == $ano;
+        });
+
+        foreach($movimentacoes as $movimentacao) {
+
+            $mes = Carbon::createFromFormat('d/m/Y H:i:s', $movimentacao['requisicao']['created_at'])->format('m') - 1;
+
+            if ($movimentacao['requisicao']['tipo'] == 'Compra' && isset($movimentacao['id_produto_simples'])) {
+                
+                $valor = $movimentacao['quantidade'] * $movimentacao['produto_simples']['preco_custo'] * -1;
+
+            } else if ($movimentacao['requisicao']['tipo'] == 'Compra' && isset($movimentacao['id_produto_composto'])) {
+
+                $valor = 0;
+
+                foreach ($movimentacao['produto_composto']['componentes'] as $componente) {
+                    $valor = $valor - $componente['quantidade'] * $componente['produto_simples']['preco_custo'];
+                }
+
+                $valor = $valor * $movimentacao['quantidade'];
+
+            } else if ($movimentacao['requisicao']['tipo'] == 'Venda' && isset($movimentacao['id_produto_simples'])) {
+
+                $valor = $movimentacao['quantidade'] * $movimentacao['produto_simples']['preco_venda'];
+
+            } else if ($movimentacao['requisicao']['tipo'] == 'Venda' && isset($movimentacao['id_produto_composto'])) {
+
+                $valor = $movimentacao['quantidade'] * $movimentacao['produto_composto']['preco_venda'];
+
+            }
+
+            $valoresPorMes[$mes] = $valoresPorMes[$mes] + $valor;
+        }
+
+        $cores = array_map(function($val){
+            if ($val < 0) {
+                return '#f56954';
+            }
+            return '#00a65a';
+        }, $valoresPorMes);
+
+        return [
+            'valores' => $valoresPorMes,
+            'cores' => $cores,
+        ];
+    }
+
     public function grid(Request $request)
     {
         $tipo = $request->tipo ?? 't';

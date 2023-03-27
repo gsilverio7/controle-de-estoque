@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-        //return view('produtos-simples-tabela');
+        $graficoUrl = route('movimentacoes.grafico');
+        return view('home', compact('graficoUrl'));
     }
 }
