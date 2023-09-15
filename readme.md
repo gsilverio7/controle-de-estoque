@@ -2,7 +2,7 @@
 
 ## About
 
-Inventory control system created with Laravel 5.6, using adminLTE package frontend assets. 
+Inventory control system created with Laravel 5.6, JQuery and MySQL, using adminLTE package frontend assets. 
 
 ## Installation Instructions
 
