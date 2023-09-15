@@ -15,7 +15,10 @@ class tableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        \App\User::updateOrCreate([
+            'name' => 'Administrador',
+            'email' => 'admin@mail.com'
+        ], [
             'name' => 'Administrador',
             'email' => 'admin@mail.com',
             'password' => Hash::make('147258'),
@@ -23,7 +26,7 @@ class tableSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('produtos_simples')->insert([
+        $produtosSimples = [
             [
                 'nome' => 'Arroz',
                 'preco_custo' => 15.00,
@@ -45,16 +48,30 @@ class tableSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]
-        ]);
+        ];
 
-        DB::table('produtos_compostos')->insert([
+        foreach ($produtosSimples as $produtoSimples) {
+            \App\Models\ProdutoSimples::updateOrCreate([
+                'nome' => $produtoSimples['nome'],
+            ], [
+                'nome' => $produtoSimples['nome'],
+                'preco_custo' => $produtoSimples['preco_custo'],
+                'preco_venda' => $produtoSimples['preco_venda'],
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+        }
+
+        \App\Models\ProdutoComposto::updateOrCreate([
+            'nome' => 'Cesta Básica',
+        ], [
             'nome' => 'Cesta Básica',
             'preco_venda' => 64.90,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('produtos_compostos_componentes')->insert([
+        $produtoCompostoComponentes = [
             [
                 'id_produto_composto' => 1,
                 'id_produto_simples' => 1,
@@ -70,16 +87,30 @@ class tableSeeder extends Seeder
                 'id_produto_simples' => 3,
                 'quantidade' => 2
             ]
-        ]);
+        ];
 
-        DB::table('requisicoes')->insert([
+        foreach ($produtoCompostoComponentes as $produtoCompostoComponente) {
+            \App\Models\ProdutoCompostoComponente::updateOrCreate([
+                'id_produto_composto' => $produtoCompostoComponente['id_produto_composto'],
+                'id_produto_simples' => $produtoCompostoComponente['id_produto_simples'],
+            ], [
+                'id_produto_composto' => $produtoCompostoComponente['id_produto_composto'],
+                'id_produto_simples' => $produtoCompostoComponente['id_produto_simples'],
+                'quantidade' => $produtoCompostoComponente['quantidade']
+            ]);
+        }
+
+        \App\Models\Requisicao::updateOrCreate([
+            'id' => 1,
+        ], [
+            'id' => 1,
             'id_user' => 1,
             'tipo' => 'c',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('movimentacoes')->insert([
+        $movimentacoes = [
             [
                 'id_produto_simples' => 1,
                 'id_requisicao' => 1,
@@ -95,6 +126,17 @@ class tableSeeder extends Seeder
                 'id_requisicao' => 1,
                 'quantidade' => 10
             ]
-        ]);
+        ];
+
+        foreach ($movimentacoes as $movimentacao) {
+            \App\Models\Movimentacao::updateOrCreate([
+                'id_produto_simples' => $movimentacao['id_produto_simples'],
+                'id_requisicao' => $movimentacao['id_requisicao'],
+            ], [
+                'id_produto_simples' => $movimentacao['id_produto_simples'],
+                'id_requisicao' => $movimentacao['id_requisicao'],
+                'quantidade' => $movimentacao['quantidade']
+            ]);
+        }
     }
 }
