@@ -70,8 +70,9 @@ class ClienteController extends Controller
         $formUrl = route('clientes.update', $cliente['id']);
         $tabelaUrl = route('clientes');
         $delUrl = route('clientes.del');
+        $googleApiKey = env('GOOGLE_API_KEY');
 
-        return view('clientes-form')->with(compact('cliente', 'formUrl', 'tabelaUrl', 'delUrl'));
+        return view('clientes-form')->with(compact('cliente', 'formUrl', 'tabelaUrl', 'delUrl', 'googleApiKey'));
     }
 
     public function store(ClienteFormRequest $request)
