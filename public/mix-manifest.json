@@ -1,4 +1,15 @@
 {
+    "/css/custom.css": "/css/custom.css",
     "/js/custom.js": "/js/custom.js",
-    "/css/custom.css": "/css/custom.css"
+    "/js/clientes-form.js": "/js/clientes-form.js",
+    "/js/clientes-tabela.js": "/js/clientes-tabela.js",
+    "/js/estoque-tabela.js": "/js/estoque-tabela.js",
+    "/js/home.js": "/js/home.js",
+    "/js/movimentacoes-tabela.js": "/js/movimentacoes-tabela.js",
+    "/js/produtos-compostos-form.js": "/js/produtos-compostos-form.js",
+    "/js/produtos-compostos-tabela.js": "/js/produtos-compostos-tabela.js",
+    "/js/produtos-simples-tabela.js": "/js/produtos-simples-tabela.js",
+    "/js/requisicoes-form.js": "/js/requisicoes-form.js",
+    "/js/requisicoes-tabela.js": "/js/requisicoes-tabela.js",
+    "/js/usuarios-tabela.js": "/js/usuarios-tabela.js"
 }

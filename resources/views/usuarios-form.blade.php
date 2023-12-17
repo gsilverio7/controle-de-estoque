@@ -55,7 +55,7 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-lock"></i>
                                 </span>
-                                <input id="new_password" type="password" class="form-control" name="new_password" placeholder="{{ isset($usuario) ? 'Opcional' : 'Senha' }}" {{ isset($usuario) ? '' : 'required' }}>
+                                <input id="new_password" type="password" class="form-control" name="new_password" placeholder="{{ isset($usuario) ? 'Opcional' : 'Senha' }}" {{ isset($usuario) ? '' : 'required' }} autocomplete="new_password">
                             </div>
                             <span class="new_password-error help-block"></span>
                         </div>
@@ -67,7 +67,7 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-lock"></i>
                                 </span>
-                                <input id="new_password_confirm" type="password" class="form-control" name="new_password_confirm" placeholder="{{ isset($usuario) ? 'Opcional' : 'Senha' }}" {{ isset($usuario) ? '' : 'required' }}>
+                                <input id="new_password_confirm" type="password" class="form-control" name="new_password_confirm" placeholder="{{ isset($usuario) ? 'Opcional' : 'Senha' }}" {{ isset($usuario) ? '' : 'required' }} autocomplete="off">
                             </div>
                             <span class="new_password_confirm-error help-block"></span>
                         </div>
@@ -106,8 +106,8 @@
 
 @section('js')
     <script>
-        var tabelaUrl = "{{ $tabelaUrl }}";
-        var delUrl = "{{ $delUrl }}";
+        var tabelaUrl = @json($tabelaUrl);
+        var delUrl = @json($delUrl);
     </script>
     <script type="text/javascript" src="/js/custom.js"></script>
 @stop

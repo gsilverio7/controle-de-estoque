@@ -89,8 +89,8 @@
 
 @section('js')
     <script>
-        var tabelaUrl = "{{ $tabelaUrl }}";
-        var delUrl = "{{ $delUrl }}";
+        var tabelaUrl = @json($tabelaUrl);
+        var delUrl = @json($delUrl);
     </script>
     <script type="text/javascript" src="/js/custom.js"></script>
 @stop
