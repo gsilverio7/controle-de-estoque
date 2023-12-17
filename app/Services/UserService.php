@@ -41,7 +41,7 @@ class UserService
 
     public function grid(Request $request)
     {
-        return $this->repository->grid();
+        return $this->repository->grid([], [['users.id', '!=', 1]]);
     }
 
     public function select2(Request $request)
