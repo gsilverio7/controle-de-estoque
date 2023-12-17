@@ -63,12 +63,11 @@ class Cliente extends Model
     //mutators
     public function setCpfAttribute($value)
     {
-        return preg_replace('~\D~', '', $value);
+        return $this->attributes['cpf'] = preg_replace('~\D~', '', $value);
     }
 
     public function setCnpjAttribute($value)
     {
-        return preg_replace('~\D~', '', $value);
+        return $this->attributes['cnpj'] = preg_replace('~\D~', '', $value);
     }
-    
 }
