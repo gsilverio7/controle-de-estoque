@@ -9,8 +9,7 @@
 @section('content')
     <div style="width: 500px; height: 700px;">
         <h4 class="text-center">Controle de Caixa 
-            <input type="number" min="1900" max="2099" step="1" id="ano" value="2023"/>
-            <button onclick="buscarDados()">ok</button>
+            <select name="year" id="yearSelect" style="width: 100px;"></select>
         </h4>
         <canvas id="myChart"></canvas>
     </div>

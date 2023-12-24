@@ -50,10 +50,33 @@ function buscarDados() {
         type: 'GET',
         url: graficoUrl,
         data: {
-            ano: $('#ano').val()
+            ano: $('#yearSelect').val()
         },
         success: function(data) {
             gerarGraficos(data.valores, data.cores);
         }
     });
 } 
+
+function mountYearSelect() {
+    const currentYear = new Date().getFullYear();
+
+    for (let year = currentYear - 50; year < currentYear + 50; year++) {
+
+        const option = $('<option>', {
+            value: year,
+            text: year
+        })
+
+        if (year === currentYear) {
+            option.attr('selected', 'selected');
+        }
+
+        $('#yearSelect').append(option);
+    }
+
+    $('#yearSelect').select2();
+}
+
+$(document).ready(mountYearSelect);
+$('#yearSelect').on('select2:select', buscarDados);
