@@ -1,5 +1,7 @@
 # Inventory Control
 
+[![versao_em_portugues](https://img.shields.io/badge/versão_em_português-009739)](https://google.com)
+
 ## About
 
 Inventory control system created with Laravel 5.6, JQuery and MySQL, using adminLTE package frontend assets. 
