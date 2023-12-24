@@ -1,7 +1,7 @@
 function cbo(select) {
     select.select2({
         ajax: {
-            url: "{{route('produtos_simples.cbo')}}",
+            url: produtoSimplesCbo,
             dataType: 'json'
         }
     });

@@ -156,6 +156,7 @@
     <script>
         var tabelaUrl = @json($tabelaUrl);
         var delUrl = @json($delUrl);
+        var produtoSimplesCbo = @json(route('produtos_simples.cbo'));
     </script>
     <script src="{{ asset('js/produtos-compostos-form.js') }}"></script>
     <script type="text/javascript" src="/js/custom.js"></script>
