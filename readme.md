@@ -1,6 +1,7 @@
+<a name="readme-title"></a>
 # Inventory Control
 
-[![versao_em_portugues](https://img.shields.io/badge/versão_em_português-009739)](https://google.com)
+[![versao_em_portugues](https://img.shields.io/badge/versão_em_português-009739)](https://github.com/gsilverio7/controle-de-estoque/blob/main/readme.pt-br.md)
 
 ## About
 
