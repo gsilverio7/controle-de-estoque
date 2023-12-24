@@ -4,6 +4,25 @@
 
 Inventory control system created with Laravel 5.6, JQuery and MySQL, using adminLTE package frontend assets. 
 
+## Features
+
+- Register simple and composite products. Usually, composite products are made from two or more simples products.
+
+![produtos_simples](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/produtos_simples.png)
+![produtos_compostos](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/produtos_compostos.png)
+
+- Create buy or sell requests from the products registered.
+
+![requisicao](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/requisicao.png)
+
+- See the financial balance from these requests.
+
+![movimentacoes](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/movimentacoes.png)
+
+- See the inventory balance from these requests.
+- Register clients.
+- Create new users.
+
 ## Installation Instructions
 
 1. Clone the repository into your machine
@@ -26,7 +45,4 @@ Password: 147258
 
 ![login](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/login.png)
 ![dashboard](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/dashboard.png)
-![produtos_simples](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/produtos_simples.png)
-![produtos_compostos](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/produtos_compostos.png)
-![requisicao](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/requisicao.png)
-![movimentacoes](https://github.com/gsilverio7/controle-de-estoque/blob/main/screenshots/movimentacoes.png)
+
