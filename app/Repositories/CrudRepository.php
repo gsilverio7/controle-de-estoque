@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 abstract class CrudRepository
-{
-    public function apagar(int $id)
+{       
+    public function apagar(int $id): bool
     {
         try {
             $this->model::find($id)->delete();
@@ -14,7 +14,7 @@ abstract class CrudRepository
         }
     }
 
-    public function atualizar(int $id, array $dados)
+    public function atualizar(int $id, array $dados): bool
     {
         try {
             $this->model::find($id)->update($dados);
@@ -24,7 +24,7 @@ abstract class CrudRepository
         }
     }
 
-    public function buscar(int $id, array $relacionamentos = [])
+    public function buscar(int $id, array $relacionamentos = []): array
     {
         try {
             $model = $this->model;
@@ -37,7 +37,7 @@ abstract class CrudRepository
         }
     }
 
-    public function criar(array $dados)
+    public function criar(array $dados): bool
     {
         try {
             $this->model::create($dados);
@@ -47,7 +47,7 @@ abstract class CrudRepository
         }
     }
 
-    public function criarRetornaId(array $dados)
+    public function criarRetornaId(array $dados): int
     {
         try {
             $id = $this->model::create($dados)->id;
@@ -57,7 +57,7 @@ abstract class CrudRepository
         }
     }
 
-    public function grid(array $relacionamentos = [], array $filtros = [])
+    public function grid(array $relacionamentos = [], array $filtros = []): array
     {
         try {
             $model = $this->model;
