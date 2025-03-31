@@ -4,7 +4,7 @@
 
 ## Sobre
 
-Inventory control system created with Laravel 5.6, JQuery and MySQL, using adminLTE package frontend assets. You can also see the project live at https://controle-de-estoque.fly.dev
+Inventory control system created with Laravel 5.6, JQuery and MySQL, using adminLTE package frontend assets.
 
 ## Funcionalidades
 
